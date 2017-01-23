@@ -1,16 +1,21 @@
 <?php
+include 'database.php';
+include 'ping.php';
 
+$stmt = $Connect->prepare("SELECT * FROM servers");
+$stmt->execute();
+
+foreach($stmt as $server) {
+	ping($server['ip']);
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<form action="ping.php" method="POST">
-		<input type="text" name="ip" placeholder="ip">
-		<input type="text" name="port" placeholder="port">
-		<input type="submit" name="submit" value="Ping">
-	</form>
+
 </body>
 </html>

@@ -8,10 +8,12 @@
 // }
 
 function ping($host,$timeout=1) {
-	if($fp = fsockopen($host,$timeout)){   
-		echo "connected to: ".$host."<br>"; 
+	if($fp = fsockopen($host,$timeout)) {
+		$status = "<span class='online'>Online</span>";
+		echo $host ." - ". $status ."<br>";
 	} else {
-		echo "server is not responding"; 
+		$status = "<span class='offline'>Offline</span>";
+		echo $host ." - ". $status ."<br>";
 	} 
 }
 
@@ -89,10 +91,6 @@ $servers = array(
 		// "37.114.109.85:27015",
 		// "84.201.16.113:27045",
 );
-
-foreach($servers as $item) {
-	ping($item);
-}
 
 
 ?>
